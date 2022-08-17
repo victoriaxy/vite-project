@@ -1,8 +1,12 @@
 {
   "name": "vite-project",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "0.0.1",
+  "author": {
+    "name": "marina",
+    "email": "marina@163.com",
+    "url": "https://github.com/victoriaxy"
+  },
   "scripts": {
     "bootstrap": "pnpm install",
     "dev": "vite",
@@ -16,10 +20,13 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "eslint-define-config": "^1.6.0",
+    "mockjs": "^1.1.0",
     "naive-ui": "^2.32.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.0-rc.10",
     "vfonts": "^0.0.3",
+    "vite-plugin-mock": "^2.9.6",
     "vue": "^3.2.37",
     "vue-router": "4"
   },
@@ -50,10 +57,29 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,vue,ts,tsx}": [
+    "*.{js,jsx,ts,tsx}": [
       "yarn lint",
+      "eslint --fix",
       "prettier --write",
       "git add"
+    ],
+    "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
+      "prettier --write--parser json"
+    ],
+    "package.json": [
+      "prettier --write"
+    ],
+    "*.vue": [
+      "eslint --fix",
+      "prettier --write",
+      "stylelint --fix"
+    ],
+    "*.{scss,less,styl,html}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.md": [
+      "prettier --write"
     ]
   }
 }
