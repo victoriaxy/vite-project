@@ -1,7 +1,6 @@
 /**
  * eslint校验规则
  */
-
 module.exports = {
   root: true,
   env: {
